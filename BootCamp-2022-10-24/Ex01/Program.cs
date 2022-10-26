@@ -44,7 +44,7 @@ Console.WriteLine("[" + string.Join(" ", array2) + "]");
 for (int i = 0; i < size - 1; i++)
 {
     int minIndex = i;
-    for (int j = i + 1; j < size; j++)
+    for (int j = i + 1; j < size-1-i; j++)
     {
         if (array2[j].Length < array2[minIndex].Length) minIndex = j;
     }
