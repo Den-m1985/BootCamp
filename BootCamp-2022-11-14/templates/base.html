@@ -3,29 +3,19 @@
 {% block content %}
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Главная страница</title>
 </head>
 
 <style>
     html{
-        background-color: rgba(127, 255, 212, 0.37);
+        background-color: rgb(127, 255, 212);
     }
 </style>
 
 <body>
 
-
-{% if data %}
-    <table>
-        <tr><th>Name</th><th>Second name</th><th>Berthday</th></tr>
-        {% for row in data %}
-            <tr><td> {{ row[0] }}</td><td> {{ row[1] }}</td><td> {{ row[2] }}<td></tr>
-        {% endfor %}
-    </table>
-{% endif %}
-
-
-<h3><a href="/about">about</a></h3>
+<h3><a href="/login">Авторизация</a></h3>
+<h3><a href="/register">Регистрация</a></h3>
 
 {% endblock %}
 </body>
