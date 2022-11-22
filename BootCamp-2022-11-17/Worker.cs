@@ -1,8 +1,8 @@
-public class Worker
+public class T
 {
-    public Worker() { }
+    public T() { }
 
-    public Worker(int age, int salary, int fullName)
+    public Worker( string fullName, int age, int salary)
     {
         Age = age;
         Salary = salary;
@@ -12,11 +12,11 @@ public class Worker
     public int Id {get; set; }
     public int Age {get; set; }
     public int Salary {get; set; }
-    public int FullName {get; set; }
+    public string FullName {get; set; }
 
     public override string ToString()
     {
         return $"[{Id} {FullName} {Age} {Salary}]";
     }
 }
-Worker w = new Worker("Вася Иванов", 123,12504);
+//Worker w = new Worker("Вася Иванов", 123,12504);
