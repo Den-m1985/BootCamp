@@ -5,6 +5,7 @@
 
 # User-specific files
 token.config
+token.config
 *.rsuser
 *.suo
 *.user
