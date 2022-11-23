@@ -1,17 +1,24 @@
 public class App<T>
-    where T : Worker
+  where T : Worker
 {
-    IRepository<T> current;
+  IRepository<T> current;
 
-    public App(IRepository<T> repo) => current = repo;
+  public void SetRepo(IRepository<T> repo)
+  {
+    current = repo;
+  }
 
-    public void Create(T item) => current.Create(item);
+  public App(IRepository<T> repo) => current = repo;
 
-    public void Update(int id, T modified) =>
-        curent.Update(id, modified);
-    
-    public void Remove(int id) => current.Delete(id);
+  public void Create(T item) => current.Create(item);
 
-    public void Print() =>
-    console.WriteLine(String.Join<T>('\n', current.Read()));
+  public void Update(int id, T modified) =>
+    current.Update(id, modified);
+
+  public void Remove(int id) => current.Delete(id);
+
+  public void Print() =>
+  Console.WriteLine(String.Join<T>('\n', current.Read()));
+
+
 }
