@@ -1,16 +1,44 @@
-﻿// // dotnet add package Newtonsoft.Json 
-string token = File.ReadAllText("token.config");
+﻿using Newtonsoft.Json;
+using System.Text;
 
-TelegramBot bot = new TelegramBot(token);
+// dotnet add package Newtonsoft.Json 
+// Клиентский код
+//  https://core.telegram.org/bots/api#available-methods
 
-void Updates(TelegramMessageModel msg)
-{
-  bot.SendMessage(msg.chatId, $"{msg.text}: получено", msg.replyToMessageId);
-}
+#region   TelegramMessageModel
+TelegramMessageModel msg = new TelegramMessageModel(
+  chatId: 5522471500,
+  firstName: "NICK",
+  messageText: "Привет! Я POST запросом был",
+  updateId: 12345,
+  replyToMessageId: 30
+  );
 
-bot.action = Updates;
+#endregion
 
-bot.Start();
+ReplayMessageModel model = new ReplayMessageModel(msg);
+string json = JsonConvert.SerializeObject(model);
+//System.Console.WriteLine(json);
 
-System.Console.WriteLine("++++");
+HttpClient hc = new HttpClient();
 
+
+
+
+
+StringBuilder sb = new StringBuilder()
+.Append("{ \"chat_id\": 5522471500,")
+.Append("\"text\": \"Привет! Я POST запросом был\",")
+.Append("\"reply_to_message_id\": 30,")
+.Append(" \"reply_markup\":{\"keyboard\":")
+.Append("[ [\"Раз123\"],[\"Три213\",\"Два312\"] ]")
+.Append(" } }");
+
+StringContent content = new StringContent(
+  content: sb.ToString(),
+  encoding: Encoding.UTF8,
+  mediaType: "application/json"
+);
+
+var res = hc.PostAsync("https://api.telegram.org/bot5731423337:AAGr97IwINO9S7VXf20PIx7JpGjU-IZzXow/sendMessage", content).Result;
+System.Console.WriteLine(res);
